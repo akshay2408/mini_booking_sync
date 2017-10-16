@@ -11,6 +11,10 @@ Router.map(function() {
     this.route('new');
     this.route('edit', {path:'/edit/:id'});
   });
+
+  this.route('bookings', function() {
+    this.route('new', {path: '/new/:rental_id'});
+  });
 });
 
 export default Router;

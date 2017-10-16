@@ -25,6 +25,10 @@ class Booking < ApplicationRecord
     end
   end
 
+  def as_json(options={})
+    super(include: {rental: {only: [:id, :name, :daily_rate] }})
+  end
+
   def booking_overlaps
     bookings = self.class.overlaps(start_at,end_at,rental_id)
     if bookings.any?
@@ -35,6 +39,6 @@ class Booking < ApplicationRecord
   end
     
   def calculate_price
-    self.price = (start_at - end_at).to_i * rental.daily_rate unless rental.blank?
+    self.price = (end_at.to_date - start_at.to_date).to_i * rental.daily_rate unless rental.blank?
   end  
 end

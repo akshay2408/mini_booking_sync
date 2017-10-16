@@ -20,7 +20,7 @@ class BookingsController < ApplicationController
     if @booking.save
       json_response(@booking, :created, @booking)
     else
-      json_response(@booking.errors, :unprocessable_entity)
+      json_response({errors: [@booking.errors]}, :unprocessable_entity)
     end
   end
 

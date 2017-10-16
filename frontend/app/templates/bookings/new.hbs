@@ -1,0 +1,36 @@
+<h3 class="text-center">Add new booking</h3>
+<form>
+	{{#if responseMessage}}
+		<div class="alert alert-success">{{responseMessage}}</div>
+	{{/if}}
+	{{#if errors}}
+		    {{log 'errors = ' errors}}
+		{{#each-in errors as |key val|}}
+		  <div class="error">
+		    {{key}}: {{val}}
+		  </div>
+		{{/each-in}}
+	{{/if}}
+	<div class="form-group">
+		<div class="row">
+			<div class="col-xs-6">
+				{{log 'model =' model}}
+				<label>Start at</label>
+				{{bootstrap-datepicker class="form-control inputStartAt" placeholder="Start date" value=model.start_at startDate="today" format='mm/dd/yyyy'}}
+			</div>
+			<div class="col-xs-6">
+				<label>End at</label>
+				{{bootstrap-datepicker class="form-control inputEndAt" placeholder="End date" value=model.end_at startDate='today'}}
+			</div>
+		</div>
+	</div>
+	<div class="form-group">
+		<label>Your email</label>
+		{{input type='email' class="form-control inputEmail" placeholder="Email address" value=model.client_email}}
+	</div>
+	<div class="form-group">
+		<label>Price: </label>
+		<span>&nbsp;&nbsp;&nbsp;{{total_price}}</span>
+	</div>
+	<button type="submit" class="btn btn-default" {{action 'saveBooking' model rental.id}} disabled={{model.isNotValid}}>Add</button>
+</form>

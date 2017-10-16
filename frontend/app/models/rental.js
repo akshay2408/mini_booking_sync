@@ -4,6 +4,7 @@ import Ember from 'ember';
 export default DS.Model.extend({
   name: DS.attr('string'),
   daily_rate: DS.attr('number'),
+	bookings: DS.hasMany('booking'),
   isNameValid: Ember.computed.notEmpty('name'),
   isDaily_rateValid: Ember.computed.notEmpty('daily_rate'),
   isValid: Ember.computed.and('isNameValid','isDaily_rateValid'),
