@@ -9,10 +9,7 @@ export default Ember.Controller.extend({
       let date2 = new Date(this.get('end_at'));
       let timeDiff = Math.abs(date2.getTime() - date1.getTime());
       let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
-      this.set('model.price', (diffDays * this.get('rental.daily_rate')).toFixed(1)); 
-      let rental_id = this.get('rental.id');
-      this.set('model.rental_id', rental_id);
+      this.set('model.price', (diffDays * this.get('model.rental.daily_rate')).toFixed(1)); 
     }
   }.observes('start_at', 'end_at'),
-
 });

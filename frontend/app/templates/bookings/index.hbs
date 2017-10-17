@@ -1,35 +1,33 @@
 {{#if responseMessage}}
-	<div class="alert alert-success">{{responseMessage}}</div>
+  <div class="alert alert-success">{{responseMessage}}</div>
 {{/if}}
 <div class="row">
-	<!-- {{#link-to 'bookings.new' class='pull-right btn btn-primary'}} New {{/link-to}} -->
+  {{#link-to 'index' class='pull-right btn btn-primary'}} New Booking {{/link-to}}
 </div>
-{{log model}}
-
 <table class="table table-striped">
-	<thead>
-		<tr>
-			<th>Name</th>
-			<th>Email</th>
-			<th>Price</th>
-			<th>Start At</th>
-			<th>End At</th>
-		</tr>
-	</thead>
-	<tbody>
-		{{#each model as |item|}}
-		<tr>
-			<td>{{item.rental.name}}</td>
-			<td>{{item.client_email}}</td>
-			<td>{{item.price}}</td>
-			<td>{{item.start_at}}</td>
-			<td>{{item.end_at}}</td>
-<!-- 			<td>
-				{{#link-to 'rentals.edit' item.id class='btn'}}<span class="glyphicon glyphicon-edit"></span>{{/link-to}}
-				<a href="" {{action 'deleteRental' item }} class='btn'><span class="glyphicon glyphicon-trash"></span></a>
-			</td>
-			<td>{{#link-to 'bookings.new' item.id class="btn btn-default"}}Book{{/link-to}}</td> -->
-		</tr>
-		{{/each}}
-	</tbody>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Price</th>
+      <th>Start At</th>
+      <th>End At</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each model as |item|}}
+    <tr>
+      <td>{{item.rental.name}}</td>
+      <td>{{item.client_email}}</td>
+      <td>{{item.price}}</td>
+      <td>{{format-date date=item.start_at}}</td>
+      <td>{{format-date date=item.end_at}}</td>
+      <td>
+        {{#link-to 'bookings.edit' item.id class='btn'}}<span class="glyphicon glyphicon-edit"></span>{{/link-to}}
+        <a href="" {{action 'deleteBooking' item }} class='btn'><span class="glyphicon glyphicon-trash"></span></a>
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
 </table>

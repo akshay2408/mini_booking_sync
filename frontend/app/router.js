@@ -14,6 +14,7 @@ Router.map(function() {
 
   this.route('bookings', function() {
     this.route('new', {path: '/new/:rental_id'});
+    this.route('edit', {path:'/edit/:id'});
   });
 });
 

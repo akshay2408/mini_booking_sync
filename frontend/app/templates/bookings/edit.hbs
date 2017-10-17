@@ -1,4 +1,4 @@
-<h3 class="text-center">Add new booking</h3>
+<h3 class="text-center">Update booking</h3>
 <form>
   {{#if errors}}
     {{#each-in errors as |key val|}}
@@ -10,6 +10,7 @@
     {{/each-in}}
   {{/if}}
   <div class="form-group">
+  
     <div class="row">
       <div class="col-xs-6">
         <label>Start at</label>
@@ -29,5 +30,5 @@
     <label>Price: </label>
     <span>&nbsp;&nbsp;&nbsp;{{model.price}}</span>
   </div>
-  <button type="submit" class="btn btn-default" {{action 'saveBooking' model}} disabled={{model.isNotValid}}>Add</button>
+  <button type="submit" class="btn btn-default" {{action 'saveBooking' model}} disabled={{model.isNotValid}}>Update</button>
 </form>
