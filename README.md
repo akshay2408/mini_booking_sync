@@ -1,24 +1,16 @@
-# README
+# Mini Booking
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Mini Booking made in Ember and Rails 5
 
-Things you may want to cover:
+## Setup
+* `git clone https://github.com/akshay2408/mini_booking_sync.git`
+* `cd mini_booking_sync`
+* `$ bundle install`
+* `$ rake db:create && rake db:migrate`
 
-* Ruby version
+* `cd frontend`
+* `$ npm install`
 
-* System dependencies
+## Run Server
+* `rails s`
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
