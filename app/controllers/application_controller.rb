@@ -1,8 +1,6 @@
 class ApplicationController < ActionController::API
   include Response
   include ExceptionHandler
-
-  before_action :require_authenticate!
   
   private
 

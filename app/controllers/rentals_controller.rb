@@ -1,4 +1,6 @@
 class RentalsController < ApplicationController
+  
+  before_action :require_authenticate!
   before_action :set_rental, only: [:show, :update, :destroy]
 
   # GET /rentals

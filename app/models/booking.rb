@@ -10,8 +10,10 @@ class Booking < ApplicationRecord
   before_validation :calculate_price, on: [:create, :update]  
 
   scope :overlaps, ->(start_date, end_date, rental) do
-    where "((start_at <= ?) and (end_at >= ?) and (rental_id = ?))", end_date, start_date, rental
+    where "((start_at < ?) and (end_at > ?) and (rental_id = ?))", end_date, start_date, rental
   end
+
+  default_scope { order('updated_at desc') }
 
   def start_at_date_cannot_be_in_the_past
     if start_at.present? && start_at < Date.today
@@ -32,7 +34,7 @@ class Booking < ApplicationRecord
   def booking_overlaps
     bookings = self.class.overlaps(start_at,end_at,rental_id)
     if bookings.any?
-      unless bookings.all.collect{ |b| b.id }.include? self.id
+      if bookings.select{ |b| b.id != self.id }.present?
         errors.add(:start_at, "overlaps with other bookings.")
       end
     end  

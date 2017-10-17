@@ -1,4 +1,6 @@
 class BookingsController < ApplicationController
+  
+  before_action :require_authenticate!
   before_action :set_booking, only: [:show, :update, :destroy]
 
   # GET /bookings
@@ -26,10 +28,10 @@ class BookingsController < ApplicationController
 
   # PATCH/PUT /bookings/1
   def update
-    if @booking.update(booking_params)
+    if @booking.update_attributes(booking_params)
       head :no_content
     else
-      json_response(@booking.errors, :unprocessable_entity)
+      json_response({errors: [@booking.errors]}, :unprocessable_entity)
     end
   end
 
