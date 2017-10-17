@@ -1,0 +1,34 @@
+<h3 class="text-center">{{title}}</h3>
+<form>
+  {{#if errors}}
+    {{#each-in errors as |key val|}}
+      <div class="alert alert-danger">
+      {{#each val as |value|}}
+        <p>{{key}}: {{value}}</p> 
+      {{/each}}
+      </div>
+    {{/each-in}}
+  {{/if}}
+  <div class="form-group">
+  
+    <div class="row">
+      <div class="col-xs-6">
+        <label>Start at</label>
+        {{bootstrap-datepicker class="form-control inputStartAt" placeholder="Start date" value=item.start_at startDate="today" format='mm/dd/yyyy'}}
+      </div>
+      <div class="col-xs-6">
+        <label>End at</label>
+        {{bootstrap-datepicker class="form-control inputEndAt" placeholder="End date" value=item.end_at startDate='today'}}
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Your email</label>
+    {{input type='email' class="form-control inputEmail" placeholder="Email address" value=item.client_email}}
+  </div>
+  <div class="form-group">
+    <label>Price: </label>
+    <span>&nbsp;&nbsp;&nbsp;{{item.price}}</span>
+  </div>
+  <button type="submit" class="btn btn-default" {{action 'buttonClicked' item}} disabled={{unless item.isValid true}}>{{buttonLabel}}</button>
+</form>
