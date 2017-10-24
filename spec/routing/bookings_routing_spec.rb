@@ -4,12 +4,12 @@ RSpec.describe BookingsController, type: :routing do
   describe "routing" do
 
     it "routes to #index" do
-      expect(:get => "/bookings").to route_to("bookings#index")
+      expect(:get => "/bookings").to route_to(ember_app: :frontend, controller: "ember_cli/ember", action: "index", rest: "bookings")
     end
 
 
     it "routes to #show" do
-      expect(:get => "/bookings/1").to route_to("bookings#show", :id => "1")
+      expect(:get => "/bookings/1").to route_to(ember_app: :frontend, controller: "ember_cli/ember", action: "index", rest: "bookings/1")
     end
 
 

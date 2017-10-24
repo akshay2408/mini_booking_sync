@@ -4,12 +4,12 @@ RSpec.describe RentalsController, type: :routing do
   describe "routing" do
 
     it "routes to #index" do
-      expect(:get => "/rentals").to route_to("rentals#index")
+      expect(:get => "/rentals").to route_to(ember_app: :frontend, controller: "ember_cli/ember", action: "index", rest: "rentals")
     end
 
 
     it "routes to #show" do
-      expect(:get => "/rentals/1").to route_to("rentals#show", :id => "1")
+      expect(:get => "/rentals/1").to route_to(ember_app: :frontend, controller: "ember_cli/ember", action: "index", rest: "rentals/1")
     end
 
 
