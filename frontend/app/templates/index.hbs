@@ -6,7 +6,7 @@
     <h2 class="margin-top">Rentals list</h2>
   </div>
   <div class="col-xs-3">
-    {{#link-to 'rentals.new' class='pull-right btn btn-primary'}} New Rental {{/link-to}}
+    {{#link-to 'rentals.new' class='pull-right btn btn-primary' id="new-rental"}} New Rental {{/link-to}}
   </div>
 </div>
 <table class="table table-striped">
@@ -24,10 +24,10 @@
       <td>{{item.name}}</td>
       <td>{{item.daily_rate}}</td>
       <td>
-        {{#link-to 'rentals.edit' item.id class='btn'}}<span class="glyphicon glyphicon-edit"></span>{{/link-to}}
-        <a href="" {{action 'deleteRental' item }} class='btn'><span class="glyphicon glyphicon-trash"></span></a>
+        {{#link-to 'rentals.edit' item.id class='btn update'}}<span class="glyphicon glyphicon-edit"></span>{{/link-to}}
+        <a href="" {{action 'deleteRental' item }} class='btn delete'><span class="glyphicon glyphicon-trash"></span></a>
       </td>
-      <td>{{#link-to 'bookings.new' item.id class="btn btn-default"}}Book{{/link-to}}</td>
+      <td>{{#link-to 'bookings.new' item.id class="btn btn-default booking"}}Book{{/link-to}}</td>
     </tr>
     {{/each}}
   </tbody>
