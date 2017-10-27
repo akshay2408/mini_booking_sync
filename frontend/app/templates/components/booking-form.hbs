@@ -30,5 +30,5 @@
     <label>Price: </label>
     <span>&nbsp;&nbsp;&nbsp;{{item.price}}</span>
   </div>
-  <button type="submit" class="btn btn-default" {{action 'buttonClicked' item}} disabled={{unless item.isValid true}}>{{buttonLabel}}</button>
+  <button type="submit" class="btn btn-default submitBtn" {{action 'buttonClicked' item}} disabled={{unless item.isValid true}}>{{buttonLabel}}</button>
 </form>

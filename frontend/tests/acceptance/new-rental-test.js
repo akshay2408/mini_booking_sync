@@ -5,7 +5,8 @@ import Ember from 'ember';
 moduleForAcceptance('Acceptance | new rental');
 
 test('Flow of to create a new rental', function(assert) {
-  server.createList('rental', 10);
+  server.createList('rental', 3);
+
 	visit('/');
 	click('#new-rental');
 

@@ -23,8 +23,9 @@ export default Ember.Route.extend({
         this.transitionTo('bookings');
         this.controller.set('errors',false);
       }).catch((failure) => {
+        newBooking.transitionTo('loaded.saved');
         let errorsObj = [];
-        if(failure){
+        if(failure.errors){
           for(var key in failure.errors[0]) {
             if(key == 'start_at'){
               errorsObj.push({'Start at': failure.errors[0][key]});
